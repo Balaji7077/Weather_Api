@@ -1,0 +1,68 @@
+{% extends 'dummy.html' %}
+
+{% block title %}
+    <title>Registration Page</title>
+    <style>
+        .registration-card {
+            max-width: 600px; 
+            margin: 20px;
+            padding: 30px;
+            border: 1px solid #cfc9c9;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(147, 50, 50, 0.1);
+           
+        }
+        h1 {
+            color: rgb(0, 0, 0);
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .custom-select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            font-weight: bold;
+            padding: 12px;
+            border: none;
+            cursor: pointer;
+            width: 50%;
+            box-sizing: border-box;
+            margin-top: 10px;
+            border-radius: 15px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+{% endblock %}
+
+{% block body_block %}
+    <div class="registration-card">
+        <h1>Fill The Form And Register</h1>
+        <form method="POST" enctype="multipart/form-data" class="registration-form">
+            {% csrf_token %}
+            {{uf.as_p}}
+            {{pf.as_p}}
+
+            <!-- Additional features with styling -->
+            <div class="form-group">
+                <label for="newsletter_checkbox">
+                    <input type="checkbox" id="newsletter_checkbox" name="newsletter_subscription">
+                    Subscribe to our newsletter
+                </label>
+            </div>
+            <input type="submit" value="Register" class="btn btn-primary">
+        </form>
+    </div>
+{% endblock %}

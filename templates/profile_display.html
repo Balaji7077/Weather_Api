@@ -1,0 +1,75 @@
+{% extends 'dummy.html' %}
+
+{% block title %}
+    <title>Profile Page</title>
+{% endblock %}
+
+{% block body_block %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white text-center">
+                    <h1>User Profile</h1>
+                </div>
+                <div class="card-body text-center">
+                    <div class="profile-picture">
+                        <img src="{{ PO.profile_pic.url }}" alt="{{ UO.username }}" class="rounded-circle shadow-lg mb-4" style="width: 150px; height: 150px;">
+                    </div>
+                    <h2 class="mb-3">{{ UO.username }}</h2>
+                    <div class="profile-info">
+                        <h4 class="mb-3">Contact Information</h4>
+                        <p><strong>Address:</strong> {{ PO.address }}</p>
+                        <p><strong>Email:</strong> {{ UO.email }}</p>
+                    </div>
+
+                    <!-- Additional details can be added here -->
+                    <h4 class="mt-4">Additional Details</h4>
+                    <p><strong>Name:</strong> {{ UO.username }}</p>
+                    <!-- Add more details as needed -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    body {
+        background-color: #f8f9fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .card {
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+    }
+
+    .card-header {
+        border-radius: 15px 15px 0 0;
+    }
+
+    .rounded-circle {
+        border: 4px solid #fff;
+    }
+
+    h1, h2, h4 {
+        color: #020202;
+    }
+
+    .profile-picture {
+        overflow: hidden;
+        border-radius: 50%;
+        margin: 0 auto;
+    }
+
+    .profile-info {
+        margin-top: 20px;
+    }
+
+    p {
+        color: #555;
+    }
+</style>
+
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends 'dummy.html' %}
+
+{% block title %}
+    <title>Home Page</title>
+{% endblock %}
+
+{% block styles %}
+    <style>
+        .card {
+            background-color: #ffffff;
+            border-radius: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 40%; /* Adjusted width */
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #000000;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        form {
+            margin-top: 10px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="submit"] {
+            padding: 8px 12px;
+            margin-bottom: 10px;
+            width: calc(100% - 24px); /* Adjust width to account for padding */
+            box-sizing: border-box; /* Ensure padding doesn't increase width */
+        }
+
+        input[type="submit"] {
+            background-color: #1d9bd6;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+{% endblock %}
+
+{% block body_block %}
+{% if obj %}
+    <div class="card">
+        <table border="3">
+            <tr>
+                <th>Username</th>
+                <th>City</th>
+                <th>Temperature</th>
+                <th>Humidity</th>
+                <th>Weather</th>
+                <th>Speed</th>
+                <th>Timestamp</th>
+            </tr>
+            <tr><h4>
+                <td>{{ obj.username }}</td>
+                <td>{{ obj.city }}</td>
+                <td>{{ obj.temperature }}</td>
+                <td>{{ obj.humidity }}</td>
+                <td>{{ obj.weather }}</td>
+                <td>{{ obj.speed }}</td>
+                <td>{{ obj.timestamp }}</td></h4>
+            </tr>
+        </table>
+    </div>
+{% else %}
+    <div class="card">
+        <form method="POST">
+            {% csrf_token %}
+          <h2>  <label for="city">CITY:</label>
+            <input type="text" id="city" name="city" placeholder="Enter city name">
+            <input type="submit" value="Search"></h2>
+        </form>
+    </div>
+{% endif %}
+{% endblock %}
